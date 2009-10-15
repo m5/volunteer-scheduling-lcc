@@ -50,7 +50,6 @@ shifts = [ Shift(n,workers) for n in range(num_shifts) ]
 shifts.sort(key=lambda s: s.num_avail)
 
 for shift in shifts:
-    shift.avail.sort()
     for worker in sorted(shift.avail, key=lambda w: -w.prefs[shift.num]):
         if worker.hours_remaining > 0:
             shift.scheduled = worker
