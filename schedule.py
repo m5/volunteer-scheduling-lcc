@@ -43,13 +43,18 @@ class Shift:
         else:
             return "<shift num=%s unscheduled>" % (self.num)
 
-
+# Building some random data
 num_shifts = 50
 num_workers = 10
 workers = [ Worker(n,50) for n in range(10) ]
 shifts = [ Shift(n,workers) for n in range(num_workers) ]
-shifts.sort(key=lambda s: s.num_avail)
 
+##############################################
+# The algorithm assigns the unassigned shift 
+# with the least availability 
+# to the worker who wants it the most.
+##############################################
+shifts.sort(key=lambda s: s.num_avail)
 for shift in shifts:
     for worker in sorted(shift.avail, key=lambda w: -w.prefs[shift.num]):
         if worker.hours_remaining > 0:
