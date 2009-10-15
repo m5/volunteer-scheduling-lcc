@@ -45,8 +45,9 @@ class Shift:
 
 
 num_shifts = 50
+num_workers = 10
 workers = [ Worker(n,50) for n in range(10) ]
-shifts = [ Shift(n,workers) for n in range(num_shifts) ]
+shifts = [ Shift(n,workers) for n in range(num_workers) ]
 shifts.sort(key=lambda s: s.num_avail)
 
 for shift in shifts:
