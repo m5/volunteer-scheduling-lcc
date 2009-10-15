@@ -57,14 +57,14 @@ def assign_shifts(shifts):
                 worker.hours_remaining -= 1
                 break
 
-shifts.sort(key=lambda s:s.num)
 
 # Building some random data
 num_shifts = 50
 num_workers = 10
 workers = [ Worker(n,50) for n in range(10) ]
 shifts = [ Shift(n,workers) for n in range(num_workers) ]
-
+assign_shifts(shifts)
+shifts.sort(key=lambda s:s.num)
 for shift in shifts:
     print shift
 
